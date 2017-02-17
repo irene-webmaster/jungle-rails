@@ -5,8 +5,11 @@
   </header>
 
   <% if cart.length == 0 %>
-      <h1>Hello</h1>
-
+    <div class="jumbotron text-center">
+      <h3>Your Shopping Cart is Empty</h3>
+      <br /><br />
+      <%= link_to 'Start Shopping', '/', class: 'btn btn-primary' %>
+    </div>
     <% else %>
 
     <div class="panel panel-default items">
