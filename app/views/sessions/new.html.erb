@@ -8,7 +8,16 @@
     <div class="col-sm-6 col-sm-offset-1 login-form">
       <%= form_tag '/login' do %>
 
-
+        <% if @user.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% @user.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
         <div class="form-group">
           <label>Email:</label>
