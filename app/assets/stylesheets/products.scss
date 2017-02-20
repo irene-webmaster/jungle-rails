@@ -87,3 +87,74 @@ main section.products-show {
 }
 
 
+// Reviews
+.review-block {
+  padding-bottom: 20px;
+
+  .review-date {
+    position: relative;
+    top: 3px;
+    font-size: 13px;
+  }
+
+  .review-desc {
+    padding-top: 5px;
+  }
+}
+
+.user-rating,
+.rating-none {
+  display: inline-block;
+  width: 125px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+
+.user-rating {
+  background-color: #ccc;
+  position: relative;
+
+  .rating-none,
+  .rating {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .rating-none {
+    background: url(image-path('star.png')) left top repeat-x;
+    z-index: 100;
+  }
+
+  .rating {
+    background: #337ab7;
+    height: 24px;
+    text-indent: -9999px;
+    z-index: 3;
+
+    &.rating-1 {
+      width: 25px;
+    }
+
+    &.rating-2 {
+      width: 50px;
+    }
+
+    &.rating-3 {
+      width: 75px;
+    }
+
+    &.rating-4 {
+      width: 100px;
+    }
+
+    &.rating-5 {
+      width: 125px;
+    }
+  }
+}
+
+
+

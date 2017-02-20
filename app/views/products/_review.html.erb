@@ -1,0 +1,24 @@
+<h4>Reviews:</h4>
+
+<% if @product.reviews.length < 2 %>
+  <h5>This product has no reviews.</h5>
+  <p>To write a review please <%= link_to 'Signup', '/signup' %></p>
+
+<% else %>
+
+  <% @product.reviews.order(created_at: :desc).each do |review| %>
+    <% if review.id %>
+      <div class="review-block">
+        <div class="user-rating">
+          <span class="rating-none">&nbsp;</span>
+          <span class="rating rating-<%= review.rating %>">
+              <%= review.rating %>
+          </span>
+        </div>
+        <span class="review-date">Published at <%= review.created_at.strftime('%b %d %Y') %></span>
+        <div class="review-desc"><%= review.description %></div>
+      </div>
+    <% end %>
+  <% end %>
+
+<% end %>
