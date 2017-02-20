@@ -1,9 +1,9 @@
 class UserMailer < ApplicationMailer
   default from: 'no-reply@jungle.com'
 
-  def welcome_email(user)
-    @user = user
+  def order_email(order)
+    @order = order
     @url  = 'http://localhost:3000/cart'
-    mail(to: @user.email, subject: 'Thanks for your order')
+    mail(to: @order.email, subject: 'Thanks for your order')
   end
 end
