@@ -1,6 +1,18 @@
 <% if current_user %>
   <div class="review-form">
+    <h4>Write a Review</h4>
     <%= form_for([@product, @product.reviews.build]) do |form| %>
+
+      <% if form.object.errors.any? %>
+        <div class="alert alert-danger">
+          <strong>The following errors prevented saving:</strong>
+          <ul>
+            <% form.object.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
       <div class="form-group">
         <%= form.label :description %>
