@@ -12,13 +12,6 @@ RSpec.describe User, type: :model do
         :password => '12345',
         :password_confirmation => '12345'
       )
-      # @another_user = User.new(
-      #   :first_name => 'Test',
-      #   :last_name => 'Testovich',
-      #   :email => 'test@gmail.com',
-      #   :password => '12345',
-      #   :password_confirmation => '5678'
-      # )
     end
 
     it 'is not valid without all data' do
@@ -51,12 +44,14 @@ RSpec.describe User, type: :model do
 
     it "requires a unique email (case insensitive)" do
       @user.email = "CARINA.omsk@gmail.COM"
-      expect(@user).to validate_uniqueness_of(:email).case_insensitive
+      expect(@user).to validate_uniqueness_of(:email)
     end
 
-    # it 'is not valid when password and password confirmation are not equal' do
-    #   expect(@another_user).to_not be_valid
-    # end
+    it "requires password minimum length of 5 characters" do
+      expect(@user).to validate_length_of(:password)
+    end
+
+
 
   end
 end
