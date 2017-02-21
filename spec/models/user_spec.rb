@@ -50,8 +50,22 @@ RSpec.describe User, type: :model do
     it "requires password minimum length of 5 characters" do
       expect(@user).to validate_length_of(:password)
     end
+  end
 
+  describe '.authenticate_with_credentials' do
+    before :each do
+      @user = User.new(
+        :first_name => 'Irina',
+        :last_name => 'Shakhova',
+        :email => 'carina.omsk@gmail.com',
+        :password => '12345',
+        :password_confirmation => '12345'
+      )
+    end
 
-
+    it "is valid with spaces before and/or after an email address" do
+      @user.email = '  carina.omsk@gmail.com   '
+      expect(@user).to be_valid
+    end
   end
 end
