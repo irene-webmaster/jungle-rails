@@ -53,6 +53,9 @@ class OrdersController < ApplicationController
       end
     end
     order.save!
+
+    UserMailer.order_email(order).deliver_later
+
     order
   end
 
@@ -69,17 +72,17 @@ class OrdersController < ApplicationController
 
   # @user = User.new(params[:user])
 
-  respond_to do |format|
-    if @order.save
-      # Tell the UserMailer to send a welcome email after save
-      UserMailer.order_email(@order).deliver_later
+  # respond_to do |format|
+  #   if @order.save
+  #     # Tell the UserMailer to send a welcome email after save
+  #     UserMailer.order_email(@order).deliver_later
 
-      format.html { redirect_to(@order, notice: 'User was successfully created.') }
-      format.json { render json: @order, status: :created, location: @order }
-    else
-      format.html { render action: 'new' }
-      format.json { render json: @order.errors, status: :unprocessable_entity }
-    end
-  end
+  #     format.html { redirect_to(@order, notice: 'User was successfully created.') }
+  #     format.json { render json: @order, status: :created, location: @order }
+  #   else
+  #     format.html { render action: 'new' }
+  #     format.json { render json: @order.errors, status: :unprocessable_entity }
+  #   end
+  # end
 
 end
