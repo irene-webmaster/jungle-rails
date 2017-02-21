@@ -5,6 +5,13 @@
   </head>
   <body>
     <h1>Thanks for your order!</h1>
+    <% @order.line_items.each do |line_item| %>
+      <p><strong>Name:</strong><%= line_item.product.name %></p>
+      <p><strong>Quantity:</strong><%= line_item.quantity %></p>
+      <p><strong>Price:</strong><%= line_item.total_price %></p>
+      <hr>
+    <% end %>
+    <p><strong>Total:</strong> <strong><%= @order.total_cents %></strong></p>
 
   </body>
 </html>
