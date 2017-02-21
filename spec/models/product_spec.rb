@@ -23,8 +23,8 @@ RSpec.describe Product, type: :model do
       @category = Category.create(:name => 'Furniture')
       @product = @category.products.create(:name => 'Pants', :price => nil, :quantity => 2)
       expect(@product).to_not be_valid
-      expect(@product.errors.messages[:price][0]).to eq("is not a number")
-      expect(@product.errors.messages[:price][1]).to eq("can't be blank")
+      expect(@product.errors.messages[:price][0]).to match("is not a number")
+      expect(@product.errors.messages[:price][1]).to match("can't be blank")
     end
 
     it 'is not valid without quantity' do
