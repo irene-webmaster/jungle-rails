@@ -1,0 +1,41 @@
+<h4>Reviews:</h4>
+
+<% if @reviews.length == 0 %>
+  <h5>This product has no reviews.</h5>
+
+  <% if !current_user %>
+    <p>To write a review please <%= link_to 'Signup', '/signup' %> or <%= link_to 'Login', '/login' %></p>
+  <% end %>
+
+<% else %>
+
+  <% @reviews.each do |review| %>
+    <% if review.id %>
+      <div class="review-block">
+        <div class="user-rating">
+          <span class="rating-none">&nbsp;</span>
+          <span class="rating rating-<%= review.rating %>">
+              <%= review.rating %>
+          </span>
+        </div>
+        <span class="review-info">Published at <%= review.created_at.strftime('%b %d %Y') %>
+        by <em><%= review.user.first_name %></em></span>
+        <div class="review-desc"><%= review.description %></div>
+
+        <% if current_user == review.user %>
+          <div class="delete-review">
+            <%= link_to 'Delete review', [review.product, review],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if !current_user %>
+    <p class="review-message">To write a review please <%= link_to 'Signup', '/signup' %> or <%= link_to 'Login', '/login' %></p>
+  <% end %>
+
+<% end %>
