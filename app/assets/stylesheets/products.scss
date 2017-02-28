@@ -71,8 +71,24 @@ main section.categories-show {
         footer {
           opacity: 1.0;
         }
+
+        .avg-rating {
+          border-color: #999;
+        }
       }
 
+      .description {
+        margin-bottom: 30px;
+      }
+
+      .avg-rating {
+        position: absolute;
+        bottom: 65px;
+        left: 0;
+        width: 100%;
+        border-top: solid 1px #eee;
+        padding: 5px 15px 0;
+      }
     }
   }
 }
