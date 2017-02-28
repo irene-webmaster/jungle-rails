@@ -12,7 +12,7 @@
     <% if product.reviews.average(:rating) == nil %>
       Not Rated Yet
     <% else %>
-      Average Rating: <%= product.reviews.average(:rating) ? product.reviews.average(:rating) : 0 %>
+      Average Rating: <%= product.reviews.average(:rating) %>
     <% end %>
   </p>
   <footer class="actions">
